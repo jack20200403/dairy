@@ -14,7 +14,7 @@
 
 ## 编写函数实现，计算字符串的长度。
 
-```
+```c
 int intStrLength(char * pointerA)
 {
 	int intStrLength = 0;

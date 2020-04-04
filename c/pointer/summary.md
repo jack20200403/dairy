@@ -55,8 +55,14 @@ int intA;
 
 取值运算符*
 
-```
+```c
 *pointerA;
+```
+
+空指针
+
+```c
+int * pointerIntA = NULL; 
 ```
 
 

@@ -28,7 +28,7 @@ scanf("%d",&intA);
 | x    | 输入十六进制整数     |
 | u    | 输入无符号十进制整数 |
 
-```
+```c
 scanf("%d",&intA);
 scanf("%s",&strA);
 scanf("%c",&charA);
