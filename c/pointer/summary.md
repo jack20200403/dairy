@@ -24,7 +24,7 @@ pointerA = &intA;
 
 
 
-## 使用指针
+### 使用指针
 
 ```c
 *pointerA
@@ -32,7 +32,7 @@ pointerA = &intA;
 
 
 
-## 定义多个指针
+### 定义多个指针
 
 ```c
 int *p,q; //p是指针，q是变量
@@ -59,10 +59,35 @@ int intA;
 *pointerA;
 ```
 
-空指针
+## 空指针
 
 ```c
 int * pointerIntA = NULL; 
+```
+
+## 指针的运算
+
+### 自增
+
+### 自减
+
+```c
+int intA;
+int * pointerIntA = &intA;
+pointerIntA++;
+pointerIntA--;
+```
+
+### 比较
+
+```c
+int intA,intB;
+int * pointerIntA = &intA;
+int * pointerIntB = &intB;
+if(pointerIntA > pointerIntB)
+{
+    //code
+}
 ```
 
 
