@@ -3,4 +3,4 @@ project(c_exercise)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(c_exercise demoFibonacci.cpp)
+add_executable(c_exercise demoOrderByBubble.cpp)

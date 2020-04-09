@@ -122,32 +122,32 @@ c_exercise/fast:
 	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/build
 .PHONY : c_exercise/fast
 
-demoFabonacci.obj: demoFabonacci.cpp.obj
+demoOrderByBubble.obj: demoOrderByBubble.cpp.obj
 
-.PHONY : demoFabonacci.obj
+.PHONY : demoOrderByBubble.obj
 
 # target to build an object file
-demoFabonacci.cpp.obj:
-	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoFabonacci.cpp.obj
-.PHONY : demoFabonacci.cpp.obj
+demoOrderByBubble.cpp.obj:
+	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoOrderByBubble.cpp.obj
+.PHONY : demoOrderByBubble.cpp.obj
 
-demoFabonacci.i: demoFabonacci.cpp.i
+demoOrderByBubble.i: demoOrderByBubble.cpp.i
 
-.PHONY : demoFabonacci.i
+.PHONY : demoOrderByBubble.i
 
 # target to preprocess a source file
-demoFabonacci.cpp.i:
-	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoFabonacci.cpp.i
-.PHONY : demoFabonacci.cpp.i
+demoOrderByBubble.cpp.i:
+	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoOrderByBubble.cpp.i
+.PHONY : demoOrderByBubble.cpp.i
 
-demoFabonacci.s: demoFabonacci.cpp.s
+demoOrderByBubble.s: demoOrderByBubble.cpp.s
 
-.PHONY : demoFabonacci.s
+.PHONY : demoOrderByBubble.s
 
 # target to generate assembly for a file
-demoFabonacci.cpp.s:
-	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoFabonacci.cpp.s
-.PHONY : demoFabonacci.cpp.s
+demoOrderByBubble.cpp.s:
+	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoOrderByBubble.cpp.s
+.PHONY : demoOrderByBubble.cpp.s
 
 # Help Target
 help:
@@ -158,9 +158,9 @@ help:
 	@echo ... c_exercise
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... demoFabonacci.obj
-	@echo ... demoFabonacci.i
-	@echo ... demoFabonacci.s
+	@echo ... demoOrderByBubble.obj
+	@echo ... demoOrderByBubble.i
+	@echo ... demoOrderByBubble.s
 .PHONY : help
 
 
