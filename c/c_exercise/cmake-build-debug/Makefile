@@ -122,32 +122,32 @@ c_exercise/fast:
 	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/build
 .PHONY : c_exercise/fast
 
-demoArray.obj: demoArray.cpp.obj
+demoFabonacci.obj: demoFabonacci.cpp.obj
 
-.PHONY : demoArray.obj
+.PHONY : demoFabonacci.obj
 
 # target to build an object file
-demoArray.cpp.obj:
-	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoArray.cpp.obj
-.PHONY : demoArray.cpp.obj
+demoFabonacci.cpp.obj:
+	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoFabonacci.cpp.obj
+.PHONY : demoFabonacci.cpp.obj
 
-demoArray.i: demoArray.cpp.i
+demoFabonacci.i: demoFabonacci.cpp.i
 
-.PHONY : demoArray.i
+.PHONY : demoFabonacci.i
 
 # target to preprocess a source file
-demoArray.cpp.i:
-	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoArray.cpp.i
-.PHONY : demoArray.cpp.i
+demoFabonacci.cpp.i:
+	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoFabonacci.cpp.i
+.PHONY : demoFabonacci.cpp.i
 
-demoArray.s: demoArray.cpp.s
+demoFabonacci.s: demoFabonacci.cpp.s
 
-.PHONY : demoArray.s
+.PHONY : demoFabonacci.s
 
 # target to generate assembly for a file
-demoArray.cpp.s:
-	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoArray.cpp.s
-.PHONY : demoArray.cpp.s
+demoFabonacci.cpp.s:
+	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoFabonacci.cpp.s
+.PHONY : demoFabonacci.cpp.s
 
 # Help Target
 help:
@@ -158,9 +158,9 @@ help:
 	@echo ... c_exercise
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... demoArray.obj
-	@echo ... demoArray.i
-	@echo ... demoArray.s
+	@echo ... demoFabonacci.obj
+	@echo ... demoFabonacci.i
+	@echo ... demoFabonacci.s
 .PHONY : help
 
 

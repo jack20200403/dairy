@@ -80,7 +80,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="E:/mine/diary/c/c_exercise/demoArray.cpp">
+		<Unit filename="E:/mine/diary/c/c_exercise/demoFabonacci.cpp">
 			<Option target="c_exercise"/>
 		</Unit>
 		<Unit filename="E:/mine/diary/c/c_exercise/CMakeLists.txt">
