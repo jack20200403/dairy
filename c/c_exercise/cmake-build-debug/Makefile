@@ -122,32 +122,32 @@ c_exercise/fast:
 	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/build
 .PHONY : c_exercise/fast
 
-main.obj: main.cpp.obj
+demoArray.obj: demoArray.cpp.obj
 
-.PHONY : main.obj
+.PHONY : demoArray.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/main.cpp.obj
-.PHONY : main.cpp.obj
+demoArray.cpp.obj:
+	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoArray.cpp.obj
+.PHONY : demoArray.cpp.obj
 
-main.i: main.cpp.i
+demoArray.i: demoArray.cpp.i
 
-.PHONY : main.i
+.PHONY : demoArray.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/main.cpp.i
-.PHONY : main.cpp.i
+demoArray.cpp.i:
+	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoArray.cpp.i
+.PHONY : demoArray.cpp.i
 
-main.s: main.cpp.s
+demoArray.s: demoArray.cpp.s
 
-.PHONY : main.s
+.PHONY : demoArray.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/main.cpp.s
-.PHONY : main.cpp.s
+demoArray.cpp.s:
+	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoArray.cpp.s
+.PHONY : demoArray.cpp.s
 
 # Help Target
 help:
@@ -158,9 +158,9 @@ help:
 	@echo ... c_exercise
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... demoArray.obj
+	@echo ... demoArray.i
+	@echo ... demoArray.s
 .PHONY : help
 
 
