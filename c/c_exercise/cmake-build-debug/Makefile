@@ -122,32 +122,32 @@ c_exercise/fast:
 	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/build
 .PHONY : c_exercise/fast
 
-demoOrderByBubble.obj: demoOrderByBubble.cpp.obj
+demoClass.obj: demoClass.cpp.obj
 
-.PHONY : demoOrderByBubble.obj
+.PHONY : demoClass.obj
 
 # target to build an object file
-demoOrderByBubble.cpp.obj:
-	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoOrderByBubble.cpp.obj
-.PHONY : demoOrderByBubble.cpp.obj
+demoClass.cpp.obj:
+	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoClass.cpp.obj
+.PHONY : demoClass.cpp.obj
 
-demoOrderByBubble.i: demoOrderByBubble.cpp.i
+demoClass.i: demoClass.cpp.i
 
-.PHONY : demoOrderByBubble.i
+.PHONY : demoClass.i
 
 # target to preprocess a source file
-demoOrderByBubble.cpp.i:
-	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoOrderByBubble.cpp.i
-.PHONY : demoOrderByBubble.cpp.i
+demoClass.cpp.i:
+	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoClass.cpp.i
+.PHONY : demoClass.cpp.i
 
-demoOrderByBubble.s: demoOrderByBubble.cpp.s
+demoClass.s: demoClass.cpp.s
 
-.PHONY : demoOrderByBubble.s
+.PHONY : demoClass.s
 
 # target to generate assembly for a file
-demoOrderByBubble.cpp.s:
-	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoOrderByBubble.cpp.s
-.PHONY : demoOrderByBubble.cpp.s
+demoClass.cpp.s:
+	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoClass.cpp.s
+.PHONY : demoClass.cpp.s
 
 # Help Target
 help:
@@ -158,9 +158,9 @@ help:
 	@echo ... c_exercise
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... demoOrderByBubble.obj
-	@echo ... demoOrderByBubble.i
-	@echo ... demoOrderByBubble.s
+	@echo ... demoClass.obj
+	@echo ... demoClass.i
+	@echo ... demoClass.s
 .PHONY : help
 
 

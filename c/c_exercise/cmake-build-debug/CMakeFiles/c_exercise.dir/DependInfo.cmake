@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "E:/mine/diary/c/c_exercise/demoOrderByBubble.cpp" "E:/mine/diary/c/c_exercise/cmake-build-debug/CMakeFiles/c_exercise.dir/demoOrderByBubble.cpp.obj"
+  "E:/mine/diary/c/c_exercise/demoClass.cpp" "E:/mine/diary/c/c_exercise/cmake-build-debug/CMakeFiles/c_exercise.dir/demoClass.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

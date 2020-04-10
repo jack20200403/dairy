@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/c_exercise.dir/demoOrderByBubble.cpp.obj"
+  "CMakeFiles/c_exercise.dir/demoClass.cpp.obj"
   "c_exercise.exe"
   "c_exercise.exe.manifest"
   "c_exercise.pdb"
