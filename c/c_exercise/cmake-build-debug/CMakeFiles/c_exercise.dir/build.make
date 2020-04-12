@@ -56,27 +56,27 @@ include CMakeFiles/c_exercise.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/c_exercise.dir/flags.make
 
-CMakeFiles/c_exercise.dir/demoClass.cpp.obj: CMakeFiles/c_exercise.dir/flags.make
-CMakeFiles/c_exercise.dir/demoClass.cpp.obj: ../demoClass.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\mine\diary\c\c_exercise\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/c_exercise.dir/demoClass.cpp.obj"
-	D:\setup\mingw-get\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\c_exercise.dir\demoClass.cpp.obj -c E:\mine\diary\c\c_exercise\demoClass.cpp
+CMakeFiles/c_exercise.dir/demoMain.cpp.obj: CMakeFiles/c_exercise.dir/flags.make
+CMakeFiles/c_exercise.dir/demoMain.cpp.obj: ../demoMain.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\mine\diary\c\c_exercise\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/c_exercise.dir/demoMain.cpp.obj"
+	D:\setup\mingw-get\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\c_exercise.dir\demoMain.cpp.obj -c E:\mine\diary\c\c_exercise\demoMain.cpp
 
-CMakeFiles/c_exercise.dir/demoClass.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/c_exercise.dir/demoClass.cpp.i"
-	D:\setup\mingw-get\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\mine\diary\c\c_exercise\demoClass.cpp > CMakeFiles\c_exercise.dir\demoClass.cpp.i
+CMakeFiles/c_exercise.dir/demoMain.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/c_exercise.dir/demoMain.cpp.i"
+	D:\setup\mingw-get\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\mine\diary\c\c_exercise\demoMain.cpp > CMakeFiles\c_exercise.dir\demoMain.cpp.i
 
-CMakeFiles/c_exercise.dir/demoClass.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/c_exercise.dir/demoClass.cpp.s"
-	D:\setup\mingw-get\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\mine\diary\c\c_exercise\demoClass.cpp -o CMakeFiles\c_exercise.dir\demoClass.cpp.s
+CMakeFiles/c_exercise.dir/demoMain.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/c_exercise.dir/demoMain.cpp.s"
+	D:\setup\mingw-get\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\mine\diary\c\c_exercise\demoMain.cpp -o CMakeFiles\c_exercise.dir\demoMain.cpp.s
 
 # Object files for target c_exercise
 c_exercise_OBJECTS = \
-"CMakeFiles/c_exercise.dir/demoClass.cpp.obj"
+"CMakeFiles/c_exercise.dir/demoMain.cpp.obj"
 
 # External object files for target c_exercise
 c_exercise_EXTERNAL_OBJECTS =
 
-c_exercise.exe: CMakeFiles/c_exercise.dir/demoClass.cpp.obj
+c_exercise.exe: CMakeFiles/c_exercise.dir/demoMain.cpp.obj
 c_exercise.exe: CMakeFiles/c_exercise.dir/build.make
 c_exercise.exe: CMakeFiles/c_exercise.dir/linklibs.rsp
 c_exercise.exe: CMakeFiles/c_exercise.dir/objects1.rsp

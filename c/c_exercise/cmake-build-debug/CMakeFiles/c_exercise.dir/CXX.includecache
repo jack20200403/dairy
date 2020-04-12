@@ -6,7 +6,15 @@
 
 #IncludeRegexTransform: 
 
-E:/mine/diary/c/c_exercise/demoClass.cpp
-iostream
+E:/mine/diary/c/c_exercise/demoMain.cpp
+src/controller/body/DemoCross.cpp
+E:/mine/diary/c/c_exercise/src/controller/body/DemoCross.cpp
+
+E:/mine/diary/c/c_exercise/src/controller/body/DemoCross.cpp
+stdio.h
 -
+../header/DemoCross.h
+E:/mine/diary/c/c_exercise/src/controller/header/DemoCross.h
+
+E:/mine/diary/c/c_exercise/src/controller/header/DemoCross.h
 

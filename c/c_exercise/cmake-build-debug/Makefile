@@ -122,32 +122,32 @@ c_exercise/fast:
 	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/build
 .PHONY : c_exercise/fast
 
-demoClass.obj: demoClass.cpp.obj
+demoMain.obj: demoMain.cpp.obj
 
-.PHONY : demoClass.obj
+.PHONY : demoMain.obj
 
 # target to build an object file
-demoClass.cpp.obj:
-	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoClass.cpp.obj
-.PHONY : demoClass.cpp.obj
+demoMain.cpp.obj:
+	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoMain.cpp.obj
+.PHONY : demoMain.cpp.obj
 
-demoClass.i: demoClass.cpp.i
+demoMain.i: demoMain.cpp.i
 
-.PHONY : demoClass.i
+.PHONY : demoMain.i
 
 # target to preprocess a source file
-demoClass.cpp.i:
-	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoClass.cpp.i
-.PHONY : demoClass.cpp.i
+demoMain.cpp.i:
+	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoMain.cpp.i
+.PHONY : demoMain.cpp.i
 
-demoClass.s: demoClass.cpp.s
+demoMain.s: demoMain.cpp.s
 
-.PHONY : demoClass.s
+.PHONY : demoMain.s
 
 # target to generate assembly for a file
-demoClass.cpp.s:
-	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoClass.cpp.s
-.PHONY : demoClass.cpp.s
+demoMain.cpp.s:
+	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/demoMain.cpp.s
+.PHONY : demoMain.cpp.s
 
 # Help Target
 help:
@@ -158,9 +158,9 @@ help:
 	@echo ... c_exercise
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... demoClass.obj
-	@echo ... demoClass.i
-	@echo ... demoClass.s
+	@echo ... demoMain.obj
+	@echo ... demoMain.i
+	@echo ... demoMain.s
 .PHONY : help
 
 

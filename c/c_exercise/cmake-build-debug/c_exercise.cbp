@@ -80,7 +80,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="E:/mine/diary/c/c_exercise/demoClass.cpp">
+		<Unit filename="E:/mine/diary/c/c_exercise/demoMain.cpp">
 			<Option target="c_exercise"/>
 		</Unit>
 		<Unit filename="E:/mine/diary/c/c_exercise/CMakeLists.txt">
