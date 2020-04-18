@@ -43,10 +43,10 @@ RM = D:\setup\clion\bin\cmake\win\bin\cmake.exe -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\mine\diary\c\c_exercise
+CMAKE_SOURCE_DIR = E:\mine\diary\c_exercise
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\mine\diary\c\c_exercise\cmake-build-debug
+CMAKE_BINARY_DIR = E:\mine\diary\c_exercise\cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -73,14 +73,14 @@ preinstall:
 CMakeFiles/c_exercise.dir/all:
 	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/depend
 	$(MAKE) -f CMakeFiles\c_exercise.dir\build.make CMakeFiles/c_exercise.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\mine\diary\c\c_exercise\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target c_exercise"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\mine\diary\c_exercise\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target c_exercise"
 .PHONY : CMakeFiles/c_exercise.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/c_exercise.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\mine\diary\c\c_exercise\cmake-build-debug\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\mine\diary\c_exercise\cmake-build-debug\CMakeFiles 2
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/c_exercise.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\mine\diary\c\c_exercise\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\mine\diary\c_exercise\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/c_exercise.dir/rule
 
 # Convenience name for target.
