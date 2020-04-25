@@ -139,3 +139,13 @@ for(int intPointA = c.begin() ; intPointA!=c.end();intPointA++ )
 #### 模板
 
 #### 迭代器
+
+## QT
+
+LNK1158
+
+```
+pleasemake sure, that the WindowsKit bin folder is part of your Build Environment
+```
+
+![0_1526642474311_2650c212-8bf8-4133-8c63-8e24436325f6-image.png](https://ddgobkiprc33d.cloudfront.net/3f7cdac6-e900-47e8-be4e-a9a1338d0d4c.png)

@@ -31,6 +31,18 @@ systemctl stop firewalld
 systemctl disable firewalld
 systemctl start xrdp
 systemctl enable xrdp
+sudo firewall-cmd --permanent --add-service vnc-server
+sudo systemctl restart firewalld
+```
+
+修改xrdp端口
+
+```
+vim /etc/xrdp/xrdp.ini
+```
+
+```
+
 ```
 
 Failed:
@@ -82,5 +94,25 @@ cd ~/.fzf/
 ```sh
 　find / -name httpd.conf
 
+```
+
+代码补全
+
+```
+yum -y install bash-completion
+source /etc/profile.d/bash_completion.sh
+```
+
+## 安装vmware
+
+```
+chmod a+x VMware-Workstation-Full-12.1.1-3770994.x86_64.bundle
+./VMware-Workstation-Full-12.1.1-3770994.x86_64.bundle
+```
+
+serial key 15
+
+```
+FU512-2DG1H-M85QZ-U7Z5T-PY8ZD
 ```
 
