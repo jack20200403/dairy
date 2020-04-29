@@ -1,3 +1,0 @@
-D:\setup\clion\bin\cmake\win\bin\cmake.exe -E remove -f CMakeFiles\c_exercise.dir/objects.a
-D:\setup\mingw-get\bin\ar.exe cr CMakeFiles\c_exercise.dir/objects.a @CMakeFiles\c_exercise.dir\objects1.rsp
-D:\setup\mingw-get\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\c_exercise.dir/objects.a -Wl,--no-whole-archive  -o c_exercise.exe -Wl,--out-implib,libc_exercise.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\c_exercise.dir\linklibs.rsp

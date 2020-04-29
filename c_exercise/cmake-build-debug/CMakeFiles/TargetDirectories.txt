@@ -1,3 +1,0 @@
-E:/mine/diary/c_exercise/cmake-build-debug/CMakeFiles/c_exercise.dir
-E:/mine/diary/c_exercise/cmake-build-debug/CMakeFiles/edit_cache.dir
-E:/mine/diary/c_exercise/cmake-build-debug/CMakeFiles/rebuild_cache.dir
