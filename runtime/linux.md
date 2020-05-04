@@ -10,9 +10,9 @@ systemctl set-default graphical.target  //设置成图形模式
 ### 配置VNC远程
 ```
 rpm -qa|grep epel
-yum install epel-release
-yum install xrdp
-yum install tigervnc-server
+yum -y install epel-release
+yum -y install xrdp
+yum -y install tigervnc-server
 # 设置vnc密码
 vncpasswd root
 /usr/sbin/sestatus -v
@@ -613,5 +613,26 @@ Rsync版本：3.0.9
 [root@50_125 rsync]# chmod 600 rsyncd.secrets 
 ```
 
+## 内核版本
 
+```
+cat /etc/issue
+```
 
+## 压缩解压
+
+**.gz压缩包(不带tar)**，用gzip命令即可(-d选项可以解压)
+格式：
+
+```
+gzip XXX.gz -d 解压位置
+```
+
+**.tar.gz压缩包**，需要使用tar命令的-z和-f选项(解压需要-x)
+格式：
+
+```
+tar -zxf XXX.tar.gz -C 解压位置1
+```
+
+**注意：**后面的-C是大写C，如果不指定解压位置需要去掉-C，系统会把压缩包中所有文件解压到当前工作文件夹

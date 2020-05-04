@@ -29,12 +29,12 @@ docker --version
 
 ```sh
 systemctl stop docker
-mv /var/lib/docker /data/setup/docker
+mv /var/lib/docker /data/setup/
 ln -s /data/setup/docker /var/lib/docker
 systemctl start docker
 ```
 
-## uninstall docker
+## uninstall
 
 ```
 sudo yum remove docker \
@@ -65,7 +65,7 @@ umount /var/lib/docker/containers/3f028b9d20216349a71a73d3622861c64eb50d8113fad9
 
 ```sh
 docker volume create portainer_data
-docker run -d -p 30302:8000 -p 30301:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+docker run -d -p 10007:8000 -p 10008:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 ```
 
 ```
@@ -253,203 +253,220 @@ networks:
 docker rm `docker ps -aq`
 ```
 
-#### 部署 NFS
-
-- 创建角色
-
-```shell
-kubectl create -f deploy/nfs/rbac.yaml
-```
-
-如果的K8S命名空间不是**default**，请在部署RBAC之前执行以下脚本:
-
-```shell
-# Set the subject of the RBAC objects to the current namespace where the provisioner is being deployed
-$ NS=$(kubectl config get-contexts|grep -e "^\*" |awk '{print $5}')
-$ NAMESPACE=${NS:-default}
-$ sed -i'' "s/namespace:.*/namespace: $NAMESPACE/g" ./deploy/nfs/rbac.yaml
-```
-
-- 创建 `ServiceAccount` 和部署 `NFS-Client Provisioner`
-
-```shell
-kubectl create -f deploy/nfs/deployment.yaml
-```
-
-error: unable to recognize "deployment.yaml": no matches for kind "Deployment" in version "extensions/v1beta1"
+## 远程访问
 
 ```
-As deployment in the extensions/v1beta1 was deprecated from
-K8S 1.16, so change the deployment to suit K8S 1.16 version
-and later.
 
-Ref: https://kubernetes.io/blog/2019/07/18/api-deprecations-in-1-16/
-
-Please read https://github.com/coreos/etcd-operator/blob/master/CONTRIBUTING.md#contribution-flow
 ```
 
+## 构建镜像
 
-
-- 创建 NFS StorageClass
-
-```shell
-kubectl create -f deploy/nfs/class.yaml
+```
+docker build -t registry-intl.cn-hangzhou.aliyuncs.com/com-tg/com-tg-center-cron-admin:2020.5.15.SNAPSHOT .
 ```
 
-- 验证NFS部署成功
+## dockerfile语法
 
-```shell
-kubectl get pod -l app=nfs-client-provisioner
+1、FROM
+
+> 语法：
+
+
+
+```ruby
+FROM <image>[:<tag>]
 ```
 
-#### 部署数据库
+> 解释：设置要制作的镜像基于哪个镜像，FROM指令必须是整个Dockerfile的第一个指令，如果指定的镜像不存在默认会自动从  Docker Hub上下载。
 
-- 部署主库
+2、MAINTAINAER
 
-```shell
-cd nacos-k8s
+> 语法：
 
-kubectl create -f deploy/mysql/mysql-master-nfs.yaml
+
+
+```xml
+MAINTAINER <name>
 ```
 
-- 部署从库
+> 解释：MAINTAINER指令允许你给将要制作的镜像设置作者信息。
 
-```shell
-cd nacos-k8s 
+3、RUN
 
-kubectl create -f deploy/mysql/mysql-slave-nfs.yaml
-```
-
-- 验证数据库是否正常工作
-
-```shell
-# master
-kubectl get pod 
-NAME                         READY   STATUS    RESTARTS   AGE
-mysql-master-gf2vd                        1/1     Running   0          111m
-
-# slave
-kubectl get pod 
-mysql-slave-kf9cb                         1/1     Running   0          110m
-```
-
-#### 部署Nacos
-
-- 修改  **deploy/nacos/nacos-pvc-nfs.yaml**
-
-```yaml
-data:
-  mysql.master.db.name: "主库名称"
-  mysql.master.port: "主库端口"
-  mysql.slave.port: "从库端口"
-  mysql.master.user: "主库用户名"
-  mysql.master.password: "主库密码"
-```
-
-- 创建 Nacos
-
-```shell
-kubectl create -f nacos-k8s/deploy/nacos/nacos-pvc-nfs.yaml
-```
-
-- 验证Nacos节点启动成功
-
-```shell
-kubectl get pod -l app=nacos
+> 语法：
 
 
-NAME      READY   STATUS    RESTARTS   AGE
-nacos-0   1/1     Running   0          19h
-nacos-1   1/1     Running   0          19h
-nacos-2   1/1     Running   0          19h
-```
-
-#### 扩容测试
-
-- 在扩容前，使用 [`kubectl exec`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands/#exec)获取在pod中的Nacos集群配置文件信息
-
-```powershell
-for i in 0 1; do echo nacos-$i; kubectl exec nacos-$i cat conf/cluster.conf; done
-```
-
-StatefulSet控制器根据其序数索引为每个Pod提供唯一的主机名。 主机名采用  -  的形式。 因为nacos StatefulSet的副本字段设置为2，所以当前集群文件中只有两个Nacos节点地址
-
-![k8s](https://cdn.nlark.com/yuque/0/2019/gif/338441/1562846123635-e361d2b5-4bbe-4347-acad-8f11f75e6d38.gif)
-
-- 使用kubectl scale 对Nacos动态扩容
 
 ```bash
-kubectl scale sts nacos --replicas=3
+1、RUN <command>  #将会调用/bin/sh -c <command>
+2、RUN ["executable", "param1", "param2"] #将会调用exec执行，以避免有些时候shell方式执行时的传递参数问题，而且有些基础镜像可能不包含/bin/sh
 ```
 
-![scale](https://cdn.nlark.com/yuque/0/2019/gif/338441/1562846139093-7a79b709-9afa-448a-b7d6-f57571d3a902.gif)
+> 解释：RUN指令会在一个新的容器中执行任何命令，然后把执行后的改变提交到当前镜像，提交后的镜像会被用于Dockerfile中定义的下一步操作，RUN中定义的命令会按顺序执行并提交，这正是Docker廉价的提交和可以基于镜像的任何一个历史点创建容器的好处，就像版本控制工具一样。
 
-- 在扩容后，使用 [`kubectl exec`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands/#exec)获取在pod中的Nacos集群配置文件信息
+4、ENTRYPOINT
+
+> 语法:
+
+
 
 ```bash
-for i in 0 1 2; do echo nacos-$i; kubectl exec nacos-$i cat conf/cluster.conf; done
+1、ENTRYPOINT ["executable", "param1", "param2"]        #将会调用exec执行，首选方式
+2、ENTRYPOINT command param1 param2             #将会调用/bin/sh -c执行
 ```
 
-![get_cluster_after](https://cdn.nlark.com/yuque/0/2019/gif/338441/1562846177553-c1c7f379-1b41-4026-9f0b-23e15dde02a8.gif)
+> 解释：ENTRYPOINT指令中指定的命令会在镜像运行时执行，在Dockerfile中只能存在一个，如果使用了多个ENTRYPOINT指令，则只有最后一个指令有效。ENTRYPOINT指令中指定的命令(exec执行的方式)可以通过docker run来传递参数，例如docker run <images> -l启动的容器将会把-l参数传递给ENTRYPOINT指令定义的命令并会覆盖CMD指令中定义的默认参数(如果有的话)，但不会覆盖该指令定义的参数，例如ENTRYPOINT ["ls","-a"]，CMD ["/etc"],当通过docker run <image>启动容器时该容器会运行ls -a /etc命令，当使用docker run <image> -l启动时该容器会运行ls -a -l命令，-l参数会覆盖CMD指令中定义的/etc参数。
 
-- 使用 [`kubectl exec`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands/#exec)执行Nacos API 在每台节点上获取当前**Leader**是否一致
+*注意：
+ ①当使用ENTRYPOINT指令时生成的镜像运行时只会执行该指令指定的命令。
+ ②当出现ENTRYPOINT指令时CMD指令只可能(当ENTRYPOINT指令使用exec方式执行时)被当做ENTRYPOINT指令的参数使用，其他情况则会被忽略。*
+
+5、CMD
+
+> 语法：
+
+
+
+```objectivec
+1、CMD ["executable", "param1", "param2"]    #将会调用exec执行，首选方式
+2、CMD ["param1", "param2"]        #当使用ENTRYPOINT指令时，为该指令传递默认参数
+3、CMD <command> [ <param1>|<param2> ]        #将会调用/bin/sh -c执行
+```
+
+> 解释：CMD指令中指定的命令会在镜像运行时执行，在Dockerfile中只能存在一个，如果使用了多个CMD指令，则只有最后一个CMD指令有效。当出现ENTRYPOINT指令时，CMD中定义的内容会作为ENTRYPOINT指令的默认参数，也就是说可以使用CMD指令给ENTRYPOINT传递参数。
+
+*注意：RUN和CMD都是执行命令，他们的差异在于RUN中定义的命令会在执行docker build命令创建镜像时执行，而CMD中定义的命令会在执行docker run命令运行镜像时执行，另外使用第一种语法也就是调用exec执行时，命令必须为绝对路径。*
+
+6、EXPOSE
+
+> 语法：
+
+
+
+```css
+EXPOSE <port> [.....]
+```
+
+> 解释：EXPOSE指令用来告诉Docker这个容器在运行时会暴露哪些端口，Docker在连接不同的容器(使用–link参数)时使用这些信息。
+
+7、ENV
+
+> 语法：
+
+
+
+```xml
+ENV <key> <value>
+```
+
+> 解释：
+>  ENV指令用于设置环境变量，在Dockerfile中这些设置的环境变量也会影响到RUN指令，当运行生成的镜像时这些环境变量依然有效，如果需要在运行时更改这些环境变量可以在运行docker run时添加–env <key>=<value>参数来修改。
+
+*注意：最好不要定义那些可能和系统预定义的环境变量冲突的名字，否则可能会产生意想不到的结果。*
+
+8、ADD
+
+> 语法：
+
+
+
+```xml
+ADD <src> <dest>
+```
+
+> 解释：
+>  ADD指令用于从指定路径拷贝一个文件或目录到容器的指定路径中，<src>是一个文件或目录的路径，也可以是一个url，路径是相对于该Dockerfile文件所在位置的相对路径，<dest>是目标容器的一个绝对路径，例如/home/yooke/Docker/Dockerfile这个文件中定义的，那么ADD /data.txt /db/指令将会尝试拷贝文件从/home/yooke/Docker/data.txt到将要生成的容器的/db/data.txt，且文件或目录的属组和属主分别为uid和gid为0的用户和组，如果是通过url方式获取的文件，则权限是600。
+
+*注意：
+ ①如果执行docker build – < somefile即通过标准输入来创建时，ADD指令只支持url方式，另外如果url需要认证，则可以通过RUN wget …或RUN curl …来完成，ADD指令不支持认证。*
+
+*②路径必须与Dockerfile在同级目录或子目录中，例如不能使用ADD ../somepath，因为在执行docker build时首先做的就是把Dockerfile所在目录包含子目录发送给docker的守护进程。*
+
+*③如果是一个url且不是以”/“结尾，则会下载文件并重命名为。*
+
+*④如果是一个url且以“/”结尾，则会下载文件到/，url必须是一个正常的路径形式，“[http://example.com](https://link.jianshu.com?t=http://example.com)”像这样的url是不能正常工作的。*
+
+*⑤如果<src>是一个本地的压缩包且<dest>是以“/”结尾的目录，则会调用“tar -x”命令解压缩，如果<dest>有同名文件则覆盖，但<src>是一个url时不会执行解压缩.
+
+- 
+
+9、COPY
+
+> 语法：
+
+
+
+```xml
+COPY <src> <dest>
+```
+
+> 解释：用法与ADD相同，不过<src>不支持使用url，所以在使用docker build – < somefile时该指令不能使用。
+
+10、VOLUME
+
+> 语法：
+
+
 
 ```bash
-for i in 0 1 2; do echo nacos-$i; kubectl exec nacos-$i curl -X GET "http://localhost:8848/nacos/v1/ns/raft/state"; done
+VOLUME ["samepath"]
 ```
 
-到这里你可以发现新节点已经正常加入Nacos集群当中
+> 解释：
+>  VOLUME指令用来设置一个挂载点，可以用来让其他容器挂载以实现数据共享或对容器数据的备份、恢复或迁移。
 
-## bug
+11、USER
 
-pod stuck on terminate
-
-```
-kubectl delete pod xxx --now
-```
+> 语法：
 
 
 
-### 0/1 nodes are available: 1 node(s) had taint {node.kubernetes.io/not-ready: }, that the pod didn't tolerate.
-
+```css
+USER [username|uid]
 ```
 
+> 解释：
+>  USER指令用于设置用户或uid来运行生成的镜像和执行RUN指令。
+
+12、WORKDIR
+
+> 语法：
+
+
+
+```undefined
+WORKDIR /path/to/workdir
 ```
 
+> 解释：
+>  WORKDIR指令用于设置Dockerfile中的RUN、CMD和ENTRYPOINT指令执行命令的工作目录(默认为/目录)，该指令在Dockerfile文件中可以出现多次，如果使用相对路径则为相对于WORKDIR上一次的值，例如WORKDIR /data，WORKDIR logs，RUN pwd最终输出的当前目录是/data/logs。
+
+13、ONBUILD
+
+> 语法：
 
 
-### calicoUp
 
-```
-179
-4789
-5473
-443
-6443*
-2379
-Network requirements
-Ensure that your hosts and firewalls allow the necessary traffic based on your configuration.
-
-Configuration	Host(s)	Connection type	Port/protocol
-Calico networking (BGP)	All	Bidirectional	TCP 179
-Calico networking with IP-in-IP enabled (default)	All	Bidirectional	IP-in-IP, often represented by its protocol number 4
-Calico networking with VXLAN enabled	All	Bidirectional	UDP 4789
-Calico networking with Typha enabled	Typha agent hosts	Incoming	TCP 5473 (default)
-flannel networking (VXLAN)	All	Bidirectional	UDP 4789
-All	kube-apiserver host	Incoming	Often TCP 443 or 6443*
-etcd datastore	etcd hosts	Incoming	Officially TCP 2379 but can vary
+```css
+ONBUILD [INSTRUCTION]
 ```
 
-unknown
+> 解释：
+>  a、ONBUILD指令可以为镜像添加触发器。其参数是任意一个Dockerfile 指令。
+>  当我们在一个Dockerfile文件中加上ONBUILD指令，该指令对利用该Dockerfile构建镜像（比如为A镜像）不会产生实质性影响。
+>  b、但是当我们编写一个新的Dockerfile文件来基于A镜像构建一个镜像（比如为B镜像）时，这时构造A镜像的Dockerfile文件中的ONBUILD指令就生效了，在构建B镜像的过程中，首先会执行ONBUILD指令指定的指令，然后才会执行其它指令。
+>  c、需要注意的是，如果是再利用B镜像构造新的镜像时，那个ONBUILD指令就无效了，也就是说只能再构建子镜像中执行，对孙子镜像构建无效。其实想想是合理的，因为在构建子镜像中已经执行了，如果孙子镜像构建还要执行，相当于重复执行，这就有问题了。
+>  d、利用ONBUILD指令,实际上就是相当于创建一个模板镜像，后续可以根据该模板镜像创建特定的子镜像，需要在子镜像构建过程中执行的一些通用操作就可以在模板镜像对应的dockerfile文件中用ONBUILD指令指定。 从而减少dockerfile文件的重复内容编写。
 
-```
-多部署几台
-kube-system / monitor-kube-state-metrics
-```
+14、ARG
+
+> ARG是Docker1.9 版本才新加入的指令。
+>  ARG 定义的变量只在建立 image 时有效，建立完成后变量就失效消失
+>  ARG指令定义了一个变量，能让用户可以在构建期间使用[docker](https://link.jianshu.com?t=https://www.centos.bz/tag/docker/) build命令和其参数–build-arg =对这个变量赋值。如果用户指定了一个构建参数没有定义在[Dockerfile](https://link.jianshu.com?t=https://www.centos.bz/tag/dockerfile/)的话，将输出错误。
 
 
 
-```
-curl -ik https://10.0.0.228:443/metrics.k8s.io/v1beta1s
-```
-
+作者：曹轩跃
+链接：https://www.jianshu.com/p/11b44a851bb9
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

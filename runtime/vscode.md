@@ -17,6 +17,6 @@ sudo code . --user-data-dir='.'
 ### libXss.so is needed
 
 ```sh
-yum install libXScrnSaver
+yum -y install libXScrnSaver
 ```
 

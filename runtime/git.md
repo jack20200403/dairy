@@ -8,6 +8,7 @@ git clone --branch <tag> <repo>
 
 ```
 git clone --branch 2020.5.1.SNAPSHOT http://103.232.84.206:82/tg/com-tg-k8s.git
+S2iRJY7mqzQBTuPD
 ```
 
 ## Git fetch commands and options

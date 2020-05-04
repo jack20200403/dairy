@@ -1,20 +1,19 @@
 # nodejs
 
-------
-
-[TOC]
-
-------
-
 ## 安装nodjs
 
 ```sh
 yum install epel-release
 yum install nodejs
-yum install npm
+    yum install npm
 ```
 
+## 卸载
 
+```sh
+ sudo npm uninstall npm -g
+ yum remove nodejs npm -y
+```
 
 ## bug
 
@@ -67,13 +66,6 @@ source ~/.bash_profile
 ```
 
 `webpack-dev-server` 的配置是在 `webpack.config.js` 中的 `devServer` 字段。
-
-## 卸载
-
-```sh
- sudo npm uninstall npm -g
- yum remove nodejs npm -y
-```
 
 
 
