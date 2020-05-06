@@ -482,7 +482,7 @@ rpm -Uvh --nodeps --replacepkgs --force yum-3.4.3-158.el7.centos.noarch.rpm
 
 ```
 yum -y install epel-release
-yum install python-pip
+yum -y install python-pip
 pip install --upgrade pip
 ```
 
@@ -530,13 +530,3 @@ Helm is not available
 ```
 
 ```
-
-cd /home/data/setup/
-
-ll
-
-cd kubesphere
-
-
-
-cd scripts

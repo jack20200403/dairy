@@ -19,10 +19,11 @@ vncpasswd root
 setenforce 0
 systemctl stop firewalld
 systemctl disable firewalld
+sudo systemctl restart firewalld
 systemctl start xrdp
 systemctl enable xrdp
 sudo firewall-cmd --permanent --add-service vnc-server
-sudo systemctl restart firewalld
+
 ```
 修改xrdp端口
 ```
