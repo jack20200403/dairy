@@ -37,3 +37,9 @@ ALTER USER `root`@`%` IDENTIFIED BY 'f27b08ce1d7f34cf';
  FLUSH PRIVILEGES;
 ```
 
+## 查看系统参数
+
+```
+show global variables LIKE "%table%";
+```
+
