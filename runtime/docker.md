@@ -261,7 +261,7 @@ docker rm `docker ps -aq`
 
 ## 构建镜像
 
-```
+```shell
 docker build -t registry-intl.cn-hangzhou.aliyuncs.com/com-tg/com-tg-center-cron-admin:2020.5.15.SNAPSHOT .
 ```
 
@@ -273,7 +273,7 @@ docker build -t registry-intl.cn-hangzhou.aliyuncs.com/com-tg/com-tg-center-cron
 
 
 
-```ruby
+```dockerfile
 FROM <image>[:<tag>]
 ```
 
@@ -285,7 +285,7 @@ FROM <image>[:<tag>]
 
 
 
-```xml
+```dockerfile
 MAINTAINER <name>
 ```
 
@@ -297,7 +297,7 @@ MAINTAINER <name>
 
 
 
-```bash
+```dockerfile
 1、RUN <command>  #将会调用/bin/sh -c <command>
 2、RUN ["executable", "param1", "param2"] #将会调用exec执行，以避免有些时候shell方式执行时的传递参数问题，而且有些基础镜像可能不包含/bin/sh
 ```
@@ -310,7 +310,7 @@ MAINTAINER <name>
 
 
 
-```bash
+```dockerfile
 1、ENTRYPOINT ["executable", "param1", "param2"]        #将会调用exec执行，首选方式
 2、ENTRYPOINT command param1 param2             #将会调用/bin/sh -c执行
 ```
@@ -327,7 +327,7 @@ MAINTAINER <name>
 
 
 
-```objectivec
+```dockerfile
 1、CMD ["executable", "param1", "param2"]    #将会调用exec执行，首选方式
 2、CMD ["param1", "param2"]        #当使用ENTRYPOINT指令时，为该指令传递默认参数
 3、CMD <command> [ <param1>|<param2> ]        #将会调用/bin/sh -c执行
@@ -343,7 +343,7 @@ MAINTAINER <name>
 
 
 
-```css
+```dockerfile
 EXPOSE <port> [.....]
 ```
 
@@ -355,7 +355,7 @@ EXPOSE <port> [.....]
 
 
 
-```xml
+```dockerfile
 ENV <key> <value>
 ```
 
@@ -370,7 +370,7 @@ ENV <key> <value>
 
 
 
-```xml
+```dockerfile
 ADD <src> <dest>
 ```
 
@@ -396,7 +396,7 @@ ADD <src> <dest>
 
 
 
-```xml
+```dockerfile
 COPY <src> <dest>
 ```
 
@@ -408,7 +408,7 @@ COPY <src> <dest>
 
 
 
-```bash
+```dockerfile
 VOLUME ["samepath"]
 ```
 
@@ -421,7 +421,7 @@ VOLUME ["samepath"]
 
 
 
-```css
+```dockerfile
 USER [username|uid]
 ```
 
@@ -434,7 +434,7 @@ USER [username|uid]
 
 
 
-```undefined
+```dockerfile
 WORKDIR /path/to/workdir
 ```
 
@@ -447,7 +447,7 @@ WORKDIR /path/to/workdir
 
 
 
-```css
+```dockerfile
 ONBUILD [INSTRUCTION]
 ```
 
@@ -466,7 +466,44 @@ ONBUILD [INSTRUCTION]
 
 
 
-作者：曹轩跃
-链接：https://www.jianshu.com/p/11b44a851bb9
-来源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+## jar
+
+```dockerfile
+FROM fabric8/java-alpine-openjdk8-jdk:1.8.0
+MAINTAINER tg
+ENV PARAMS=""
+ENV TZ=PRC
+COPY ./doc/font/Algerian.ttf /usr/share/fonts/Algerian.ttf
+ENV LANG en_US.UTF-8
+RUN apk add --update ttf-dejavu fontconfig && rm -rf /var/cache/apk/*
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+ADD target/com-tg-center-be.jar /app.jar
+ENTRYPOINT ["sh","-c","java -jar $PARAMS /app.jar "]
+EXPOSE 8080
+```
+
+## war
+
+```dockerfile
+FROM docker.io/tomcat:8-jdk8-openjdk
+MAINTAINER tg(tg@tg.com)
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN echo 'Asia/Shanghai' >/etc/timezone
+COPY  target/lottery-core.war   /usr/local/tomcat/webapps
+COPY  tomcat/conf/server.xml  /usr/local/tomcat/conf/server.xml
+WORKDIR /usr/local/tomcat
+CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
+```
+
+## nginx
+
+```dockerfile
+FROM nginx:1.18.0-alpine
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN echo 'Asia/Shanghai' >/etc/timezone
+COPY dist/ /usr/share/nginx/html/
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+EXPOSE 8080
+```
+
